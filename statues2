@@ -1,0 +1,13 @@
+function makeArrayConsecutive2(statues) {
+    var sizeStatuary = arrMax(statues) - arrMin(statues) + 1;
+    return sizeStatuary - statues.length; 
+}
+
+
+function arrMax(arr) {
+    Math.max.apply(null, arr);
+}
+
+function arrMin(arr) {
+    Math.min.apply(null, arr);
+}

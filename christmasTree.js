@@ -35,30 +35,30 @@
 
 //             ___
 //       *        |
-//       *        |-- the crown      
-//      ***    ___|       
+//       *        |-- the crown
+//      ***    ___|
 //     *****      |
 //    *******     |-- level 1
 //   ********* ___|
 //      ***    ___|-- the foot
 // For levelNum = 2 and levelHeight = 4, the output should be
-// christmasTree(levelNum, levelHeight) = 
-//     ["      *", 
-//      "      *", 
-//      "     ***", 
-//      "    *****", 
-//      "   *******", 
-//      "  *********", 
-//      " ***********", 
-//      "   *******", 
-//      "  *********", 
-//      " ***********", 
-//      "*************", 
-//      "    *****", 
+// christmasTree(levelNum, levelHeight) =
+//     ["      *",
+//      "      *",
+//      "     ***",
+//      "    *****",
+//      "   *******",
+//      "  *********",
+//      " ***********",
+//      "   *******",
+//      "  *********",
+//      " ***********",
+//      "*************",
+//      "    *****",
 //      "    *****"]
 // , which represents the following tree:
 
-//                 ___ 
+//                 ___
 //         *          |
 //         *          | -- the crown
 //        ***      ___|
@@ -89,7 +89,7 @@
 
 // [output] array.string
 // The Christmas tree according to the specs and the inputs. Output elements should not contain trailing whitespaces, and at least one of them should start with '*'symbol.
-// 
+//
 function buildCrown() {
 	return ["*", "*", "***"];
 }
@@ -97,6 +97,7 @@ function buildCrown() {
 function christmasTree(levelNum, levelHeight) {
 	var tree = buildCrown();
 
+//This is an attempt to update a repository.
 
 
 	tree.forEach(function(ele) {

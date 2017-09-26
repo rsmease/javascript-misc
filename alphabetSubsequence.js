@@ -1,40 +1,25 @@
-// Description:
+//boolean function; return true if string is:
+//(1) alphabetic
+//(2) increasing
+//(3) composed of unique characters
 
-// Check whether the given string is a subsequence of the plaintext alphabet.
-
-// Example
-
-// For s = "effg" or s = "cdce", the output should be
-// alphabetSubsequence(s) = false;
-// For s = "ace" or s = "bxz", the output should be
-// alphabetSubsequence(s) = true.
-// Input/Output
-
-// [time limit] 3000ms (cs)
-// [input] string sConstraints:
-// 2 ≤ s.length ≤ 15.
-// [output] booleantrue if the given string is a subsequence of the alphabet, false otherwise.
+//refactored Sep 26 17
 
 function alphabetSubsequence(s) {
-	var sArr = Array.from(s);
-	var sSet = new Set(sArr);
-
-	if (sSet.size !== sArr.length) {
-		console.log("FAILED SET TEST");
-		return false;
-	}
-
-	var sArrUnsorted = sArr.slice(0);
-	var sArrSorted = sArr.slice(0).sort();
-
-	for (var i = 0; i < sArrSorted.length; i++) {
-		if (sArrSorted[i] !== sArrUnsorted[i]) {
-			return false; 
-		}
-	}
-	// console.log(sArrUnsorted);
-
-	return true; 
+	if (hasRepeatingChars(s)) { return false; };
+	if (hasNonAlphaChars(s)) { return false; };
+	return s.split("").slice(0).sort().join("") === s;
 }
 
-console.log(alphabetSubsequence("bxz"))
+function hasRepeatingChars(s) {
+	var sArr = Array.from(s);
+	var sSet = new Set(sArr);
+	return sSet.size !== sArr.length;
+}
+
+function hasNonAlphaChars(s) {
+	var alpha = s.split("").filter(ele => /[A-Za-z]/.test(ele)).join("")
+	return alpha.length !== s.length;
+}
+
+console.log(alphabetSubsequence("cmz"))

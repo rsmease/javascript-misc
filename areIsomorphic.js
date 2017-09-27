@@ -1,59 +1,20 @@
-// Description:
+//isomorphic arrays share the same number of rows, each of identical length; isomorphism is agnostic to the content of the arrays
 
-// Two two-dimensional arrays are isomorphic if they have the same number of rows and each pair of respective rows contains the same number of elements.
+//ultimately, I settled on a simple for-loop search of the subarrays
+//pre-comparing flattened arrays and sorting in order to compare the shorter subarrays seemed clever but less efficient
 
-// Given two two-dimensional arrays, check if they are isomorphic.
+//refactored Sep 27 17
 
-// Example
-
-// For
-// test1 = [[1, 1, 1],
-//           [0, 0]]
-// // and
-
-// test2 = [[2, 1, 1],
-//           [2, 1]]
-// the output should be
-// areIsomorphic(array1, array2) = true;
-
-// For
-test1 = [[2],
-          []]
-// and
-
-test2 = [[2]]
-// the output should be
-// areIsomorphic(array1, array2) = false.
-
-// Input/Output
-
-// [time limit] 3000ms (cs)
-// [input] array.array.integer array1
-// Constraints:
-// 1 ≤ array1.length ≤ 5,
-// 0 ≤ array1[i].length ≤ 5,
-// 0 ≤ array1[i][j] ≤ 50.
-
-// [input] array.array.integer array2
-// Constraints:
-// 1 ≤ array2.length ≤ 5,
-// 0 ≤ array2[i].length ≤ 5,
-// 0 ≤ array2[i][j] ≤ 50.
-
-// [output] boolean
-// 
 function areIsomorphic(arr1, arr2) {
-	if (arr1.length !== arr2.length) {
-		return false;
-	} else {
-		for (var i = 0; i < arr1.length; i++) {
-			if (arr1[i].length !== arr2[i].length) {
-				return false;
-			}
-		}
-		return true; 
-	}
-
+  return arr1.length === arr2.length && allRowsSameLength(arr1, arr2);
 }
 
-console.log(areIsomorphic(test1, test2));
+function allRowsSameLength(arr1, arr2) {
+  //search arrays for misaligned subarrays
+  for (var i = 0; i < arr1.length; i++) {
+    var curr1 = arr1[i].length;
+    var curr2 = arr2[i].length;
+    if (curr1 !== curr2) { return false; };
+  }
+  return true;
+}

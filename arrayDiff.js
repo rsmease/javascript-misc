@@ -1,11 +1,7 @@
-function array_diff(a, b) {
-  difference = []
-  a.forEach(function(ele) {
-    if (b.indexOf(ele) === -1) {
-      difference.push(ele);
-    }
-  })
-  return difference;
-}
+//refactored for ES6, Sep 28 17
 
-console.log(array_diff([2, 1],[1]))
+Array.prototype.difference = function (other_arr) {
+  return this.slice().filter(ele => other_arr.indexOf(ele) === -1)
+};
+
+console.log([2,1].difference([1]))

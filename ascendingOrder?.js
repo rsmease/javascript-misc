@@ -1,5 +1,9 @@
-function inAscOrder(arr) {
+//refactored for ES6 Sep 28 17
+
+function isAscending(arr) {
   var copy = arr.slice();
-  var arrSorted = copy.sort(function(a,b) {return a - b})
-  return arrSorted.join("") === arr.join("")
+  return copy.join("") === copy.sort((a, b) => a - b).join("");
 }
+
+console.log(isAscending([0, 1, 4]))
+console.log(isAscending([0, 1, -4]))

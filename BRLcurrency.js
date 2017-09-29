@@ -1,23 +1,13 @@
-function currencyBRL(number) {
-	if (number === undefined) {
-		return "R$ 0,00"
-	} else {
-		numRounded = parseFloat(number).toFixed(2).toString().split("");
-		BRL_converted = "R$ ";
-		numRounded.forEach(function(ele) {
-			if (ele === ".") {
-				BRL_converted += ","
-			} else {
-				BRL_converted += ele;
-			}
-		})
-		return BRL_converted
+//Refactored Sep 28 17
+//Convert float value to BRL (Brazilian Real) currency format
+
+function currencyBRL(number = 0) {
+	if (!(/\d+\.?(\d+)?/.test(number))) {
+		return "Invalid input."
 	}
+  return 'R$ ' + number.toFixed(2).replace('.',',');
 }
 
-console.log(currencyBRL(10.2334))
-
-//simpler alternative using 'replace'
-//function currencyBRL(number=0) {
-//   return 'R$ ' + number.toFixed(2).replace('.',',');
-// }
+console.log(currencyBRL(130.234312432134));
+console.log(currencyBRL());
+console.log(currencyBRL(000001));

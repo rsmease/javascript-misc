@@ -1,62 +1,23 @@
-// Task
+//refactored Fri Sep 29 to include Regex
 
-// Given an initial string s, switch case of the minimal possible number of letters to make the whole string written in the upper case or in the lower case.
-
-// Input/Output
-
-// [input] string s
-
-// String of odd length consisting of English letters.
-
-// 3 ≤ inputString.length ≤ 99.
-
-// [output] a string
-
-// The resulting string.
-
-// Example
-
-// For s = "Aba", the output should be "aba"
-
-// For s = "ABa", the output should be "ABA"
-
-// describe("Basic Tests", function(){ 
-// it("It should works for basic tests.", function(){
-
-// Test.assertEquals(caseUnification("Aba"),"aba")
-
-// Test.assertEquals(caseUnification("ABa"),"ABA")
-
-// Test.assertEquals(caseUnification("ZZZZZ"),"ZZZZZ")
-
-// })})
+//make string uppercase or lowercase depending on most frequent case
+//where case frequency is event, default to lowercase
 
 function caseUnification(s) {
-  //coding and coding..
-  var counts = countCase(s);
-  if (counts[0] > counts[1]) {
-  	return s.toUpperCase();
-  } else {
-  	return s.toLowerCase();
-  }
+  var uppercase = s.split("").filter(char => isUpper(char)).length;
+  var lowercase = s.split("").filter(char => isLower(char)).length;
+
+  return uppercase > lowercase ? s.toUpperCase() : s.toLowerCase();
 }
 
-function countCase(str) {
-	upperLowerCounts = [0,0];
-	for (var i = 0; i< str.length; i++) {
-		var currentChar = str.charAt(i)
-		if (currentChar.toUpperCase() === currentChar) {
-			upperLowerCounts[0]++
-		} else {
-			upperLowerCounts[1]++
-		}
-	}
-	return upperLowerCounts;
+function isUpper(char) {
+  return /[A-Z]/.test(char);
 }
 
-console.log(caseUnification("Aba"))
+function isLower(char) {
+  return /[a-z]/.test(char);
+}
 
-//A cooler solution that uses regex
-//function caseUnification(s) {
-//   return s.split(/[a-z]/).length>s.split(/[A-Z]/).length?s.toLowerCase():s.toUpperCase()
-// }
+console.log(caseUnification("AbA       "));
+console.log(caseUnification("This is a sample sentence."));
+console.log(caseUnification("DNA_id"));

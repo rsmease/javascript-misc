@@ -1,3 +1,5 @@
+//build centered tower of asterisks
+
 function towerBuilder(floors) {
   var maxFloorLength = (floors - 1) * 2 + 1;
   var tower = [];
@@ -10,7 +12,7 @@ function towerBuilder(floors) {
     }
     tower.push(newFloor.join(""));
   }
-  return tower;
+  return tower.join("\n");
 }
 
-console.log(towerBuilder(4))
+console.log(towerBuilder(25))

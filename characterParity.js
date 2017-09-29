@@ -16,7 +16,7 @@
 // [input] char symbol
 // [output] string
 // Tests:
-// 
+//
 var numVals = "0123456789".split("");
 
 function isEven(num) {

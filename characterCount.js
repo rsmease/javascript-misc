@@ -1,7 +1,8 @@
-function count (string) {
-  console.log(string)
-  result = {};
+//Refactored Fri Sep 29
+//count frequency of all chars in a string; case sensitive
 
+function charCount(string) {
+  result = {};
   for (var i = 0; i < string.length; i++) {
     var currentChar = string.charAt(i);
     if (currentChar in result) {
@@ -10,6 +11,7 @@ function count (string) {
       result[currentChar] = 1;
     }
   }
-  console.log(result);
   return result;
 }
+
+console.log(charCount("Ryan is writing a test."))

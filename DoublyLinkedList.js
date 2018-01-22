@@ -115,4 +115,21 @@ class DoublyLinkedList {
         return deletedNode;
     }
 
+    reverse() {
+        const head = self.head;
+        let current = self.head;
+        let temp = undefined;
+
+        while (current) {
+            temp = current.next;
+            current.next = current.prev;
+            current.prev = temp;
+            if (!temp) {
+                this.head = current;
+            }
+            current = temp;
+        }
+        return this;
+    }
+
 }

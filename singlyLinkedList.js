@@ -92,3 +92,35 @@ SinglyLinkedList.prototype.remove = function (i) {
 
     return deletedNode;
 };
+
+SinglyLinkedList.prototype.reverse = function () {
+    //return SLL if it has <= 2 nodes 
+    if (!this.head || !this.head.next) {
+        return this;
+    }
+
+    const nodes = [];
+    const current = this.head;
+
+    while (current) {
+        nodes.push(current);
+        current = current.next;
+    }
+
+    const reversedSLL = new SinglyLinkedList();
+    reversedSLL.head = nodes.pop();
+    current = reversedSLL.head;
+
+    const nextNode = nodes.pop();
+    while (nextNode) {
+        //reset old .next of nextNode;
+        nextNode.next = null;
+        current.next = nextNode;
+
+        //move on to the nextNode, if !null
+        current = current.next;
+        nextNode = nodes.pop();
+    }
+
+    return reversedSLL;
+};

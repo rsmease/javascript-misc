@@ -4,7 +4,7 @@
 //   this.value = x;
 //   this.next = null;
 // }
-
+k
 /* Basic idea: 
  * - Find the center point of the node list, using double steps (fast var) and 
  *   reverse the first half of the list.

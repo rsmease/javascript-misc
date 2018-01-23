@@ -8,10 +8,8 @@ const greatCircleDistance = (position1, position2) => {
     const lat2 = degreesToRadians(position2[0]);
     const lon2 = degreesToRadians(position2[1]);
 
-    const centralAngle =
-        Math.acos((Math.sin(lat1) * Math.sin(lat2) +
-            Math.cos(lat1) * Math.cos(lat2) +
-            Math.cos(lon2 - lon1)));
+    const absoluteLongitudinalDifference = Math.abs(lon2 - lon1);
+    const centralAngle = Math.acos((Math.sin(lat1) * Math.sin(lat2) + (Math.cos(lat1) * Math.cos(lat2) * Math.cos(absoluteLongitudinalDifference))));
 
     return EARTH_RADIUS_KM * centralAngle;
 };

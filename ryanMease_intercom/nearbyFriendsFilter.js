@@ -32,17 +32,17 @@ class CustomerIndex {
     }
 
     getCustomerPosition(customer) {
-        return [parseFloat(customer.latitute), parseFloat(customer.longitude)];
+        return [parseFloat(customer["latitude"]), parseFloat(customer["longitude"])];
     }
 
     getNearbyCustomers(homeOffice, maxRange) {
         return this.customers.filter(customer => {
             const customerPosition = this.getCustomerPosition(customer);
-            return greatCircleDistance(customerPosition, this.officeCoordinates.homeOffice) <= maxRange;
+            return greatCircleDistance(customerPosition, this.officeCoordinates[homeOffice]) <= maxRange;
         });
     }
 
 }
 
 const myCustomers = new CustomerIndex('./customers.txt');
-console.log(myCustomers.getCustomerPosition(myCustomers.customers[1]));
+const nearbyCustomers = myCustomers.getNearbyCustomers("Dublin", 20);

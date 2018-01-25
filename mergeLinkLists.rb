@@ -1,11 +1,3 @@
-# Definition for singly - linked list:
-# class ListNode
-#   attr_accessor: value, : next
-#   def initialize(val)
-# @value = val
-# @next = nil
-# end
-#
 # Definition for singly-linked list:
 # class ListNode
 #   attr_accessor :value, :next
@@ -15,6 +7,9 @@
 # end
 #
 def mergeTwoLinkedLists(l1, l2)
+    if l1.nil? && l2.nil? 
+        return l1
+    end
     l3 = ListNode.new(nil)
     head = l3
     loop do
@@ -33,7 +28,7 @@ def mergeTwoLinkedLists(l1, l2)
             elsif l2.nil?
                 l3.value = l1.value
                 l1 = l1.next ? l1.next : nil
-                unless l2.nil? 
+                unless l1.nil? 
                     l3.next = ListNode.new(nil)
                     l3 = l3.next
                 end

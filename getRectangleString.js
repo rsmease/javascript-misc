@@ -8,8 +8,7 @@ function getRectangleString(width, height) {
 		}
 	} else {
 		var edge = "*".repeat(width) + "\r\n";
-		var body = "*" + (" ".repeat(width-2)) + "*"  + "\r\n";
-
+		var body = "*" + (" ".repeat(width - 2)) + "*" + "\r\n";
 		rectangle.push(edge);
 		for (var i = 0; i < height - 2; i++) {
 			rectangle.push(body);

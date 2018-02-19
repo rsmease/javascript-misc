@@ -51,8 +51,9 @@ class Graph {
     shortestPath(start, finish) {
         const nodes = new PriorityQueue();
         const distances = {};
-        const previous = {};
+        const parents = {};
         const path = [];
+        let pathLength = 0;
         let smallest, vertex, neighbor, alt;
 
         for (let vertex in this.vertices) {
@@ -63,17 +64,17 @@ class Graph {
                 distances[vertex] = INFINITY;
                 nodes.enqueue(INFINITY, vertex);
             }
-            previous[vertex] = null;
+            parents[vertex] = null;
         }
 
         while (!nodes.isEmpty()) {
             smallest = nodes.dequeue();
 
             if (smallest === finish) {
-
-                while (previous[smallest]) {
+                pathLength = distances[smallest];
+                while (parents[smallest]) {
                     path.push(smallest);
-                    smallest = previous[smallest];
+                    smallest = parents[smallest];
                 }
                 break;
             }
@@ -86,12 +87,13 @@ class Graph {
                 alt = distances[smallest] + this.vertices[smallest][neighbor];
                 if (alt < distances[neighbor]) {
                     distances[neighbor] = alt;
-                    previous[neighbor] = smallest;
+                    parents[neighbor] = smallest;
 
                     nodes.enqueue(alt, neighbor);
                 }
             }
         }
+        console.log(pathLength)
         path.push(start);
         return path;
     }
